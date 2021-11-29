@@ -1,0 +1,60 @@
+<script>
+   
+    function ShowAllFiles() {
+
+        let tr_info = document.querySelectorAll("tr[id=\"showAllFiles\"]");
+        let attachments = document.querySelectorAll("div[class=\"attachments\"]");
+
+        if( tr_info.length > 0 ){
+            tr_info[0].remove();
+        }
+
+        if ( attachments.length > 0 ) {
+            tr = attachments[0].querySelectorAll("tr");
+            for( i=0; i < tr.length; i++ ) {  
+                tr[i].style.display = "block";
+            }
+
+            body = attachments[0].querySelectorAll("tbody")[0];
+            var row = document.createElement("TR");
+            row.id = "showAllFiles";
+            row.innerHTML = "<a href = '' onClick='return HideAttachments()'> ... less files </a>";
+            body.appendChild( row);
+        }
+
+        return false;
+    }
+
+    function HideAttachments() {
+        
+        let attachments = document.querySelectorAll("div[class=\"attachments\"]");
+        let tr_info = document.querySelectorAll("tr[id=\"showAllFiles\"]");
+
+        if ( attachments.length > 0 ) {
+            if( tr_info.length > 0 ){
+                tr_info[0].remove();
+            }
+
+            tr = attachments[0].querySelectorAll("tr");
+            for( i=0; i < tr.length; i++ ) {  
+                if( tr.length > 2 && i > 2 ) {
+                    tr[i].style.display = "none";
+                }
+            }
+
+            if( tr.length > 3 ) {
+                body = attachments[0].querySelectorAll("tbody")[0];
+                var row = document.createElement("TR");
+                row.id = "showAllFiles";
+                row.innerHTML = "<a href = '' onClick='return ShowAllFiles()'> ... show more " + (tr.length - 3).toString() + " files </a>";
+                body.appendChild( row);
+            }
+        }    
+
+        return false;  
+    }
+
+    $(document).ready(function() {
+        HideAttachments();
+    });  
+</script>
