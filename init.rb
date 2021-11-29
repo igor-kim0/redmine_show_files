@@ -1,6 +1,6 @@
 require 'redmine'
 
-Redmine::Plugin.register :redmine_show_filrs do
+Redmine::Plugin.register :redmine_show_files do
     name 'Show attachments files patchs'
     author 'Igor Kim'
     description "Show attachments files patch"
