@@ -1,0 +1,3 @@
+= Redmine show files
+
+Adds the ability to show a shortened list of attached files
